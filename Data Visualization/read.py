@@ -3,7 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import h5py
 
-PATH = '../nyu_depth_v2_labeled.mat'
+# PATH = '../nyu_depth_v2_labeled.mat'
+PATH = 'D:/project/ML/dataset/nyu_depth_v2_labeled.mat'
 
 # read mat file
 FILE = h5py.File(PATH)
@@ -20,8 +21,8 @@ img_[:, :, 2] = img[2, :, :].T
 
 # imshow
 img__ = img_.astype('float32')
-io.imshow(img__ / 255.0)
-io.show()
+plt.imshow(img__/255.0)
+plt.show()
 
 # print(img.shape)
 # plt.imshow(img_/255)
