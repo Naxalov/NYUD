@@ -5,7 +5,8 @@ import h5py
 
 # PATH = '../nyu_depth_v2_labeled.mat'
 PATH = 'D:/project/ML/dataset/nyu_depth_v2_labeled.mat'
-
+# index of image (dataset)
+INDEX_F = 0
 # read mat file
 FILE = h5py.File(PATH)
 # Discovering keys
@@ -24,7 +25,18 @@ img__ = img_.astype('float32')
 plt.imshow(img__/255.0)
 plt.show()
 
-# print(img.shape)
-# plt.imshow(img_/255)
-# plt.show()
-# See sample image
+
+
+# read corresponding depth
+
+depth = FILE['depths'][INDEX_F]
+
+
+# reshape for imshow
+depth_ = np.empty([480, 640, 3])
+depth_[:,:,0] = depth[:,:].T
+depth_[:,:,1] = depth[:,:].T
+depth_[:,:,2] = depth[:,:].T
+
+plt.imshow(depth_/4.0)
+plt.show()
